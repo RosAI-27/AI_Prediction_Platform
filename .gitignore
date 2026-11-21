@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data (do not commit raw datasets)
+data/
+datasets/
+
+# Model artifacts (may be large)
+models/*.keras
+models/*.h5
+models/*.pkl
+models/*.joblib
+models/*.weights
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
