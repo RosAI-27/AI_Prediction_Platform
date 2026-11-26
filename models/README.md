@@ -7,7 +7,9 @@ Generated model files are kept locally and are excluded from Git by default. Thi
 ### Image classification
 
 - `models/best_vegetable_mobilenetv2.keras` — selected MobileNetV2 classifier used for the reported 99.875% test accuracy.
-- `models/best_vegetable_cnn.keras` — separate custom-CNN experiment checkpoint, if retained locally.
+- `models/best_vegetable_cnn.keras` — historical custom-CNN experiment checkpoint. Treat it as exploratory, not as the selected classifier.
+
+The separately uploaded `notebooks/models/best_vegetable_cnn.keras` is a distinct file from the local root-level CNN checkpoint (their SHA-256 hashes differ). The CNN notebook's saved-model evaluation output reports 25% test accuracy, so this checkpoint must not be presented as a successful or production-ready classifier without further investigation. Keep the two files separate until their provenance and preprocessing/class-index assumptions are verified.
 
 ### Stock forecasting
 
@@ -23,5 +25,3 @@ Generated model files are kept locally and are excluded from Git by default. Thi
 3. Do not overwrite a validated checkpoint with an experimental one.
 4. If model binaries need to be distributed, choose an explicit method such as Git LFS or a release asset and document how to retrieve them.
 5. Never claim that a saved final-refit model has independent test performance unless it was evaluated on a genuinely held-out test set.
-
-The notebook-only CNN checkpoint currently tracked under `notebooks/models/` is an exploratory artifact, not the selected MobileNetV2 classifier.
