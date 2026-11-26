@@ -1,12 +1,15 @@
+"""Dataset loading utilities for the four-class vegetable image experiment."""
 
 from pathlib import Path
+
 import tensorflow as tf
+
 
 CLASSES = [
     "Bean",
     "Bitter_Gourd",
     "Bottle_Gourd",
-    "Brinjal"
+    "Brinjal",
 ]
 
 IMAGE_SIZE = (224, 224)
@@ -15,6 +18,7 @@ SEED = 42
 
 
 def load_datasets(data_dir):
+    """Load train, validation, and test datasets from class subdirectories."""
     data_dir = Path(data_dir)
 
     train_ds = tf.keras.utils.image_dataset_from_directory(
@@ -24,7 +28,7 @@ def load_datasets(data_dir):
         batch_size=BATCH_SIZE,
         label_mode="int",
         shuffle=True,
-        seed=SEED
+        seed=SEED,
     )
 
     val_ds = tf.keras.utils.image_dataset_from_directory(
@@ -33,7 +37,7 @@ def load_datasets(data_dir):
         image_size=IMAGE_SIZE,
         batch_size=BATCH_SIZE,
         label_mode="int",
-        shuffle=False
+        shuffle=False,
     )
 
     test_ds = tf.keras.utils.image_dataset_from_directory(
@@ -42,13 +46,12 @@ def load_datasets(data_dir):
         image_size=IMAGE_SIZE,
         batch_size=BATCH_SIZE,
         label_mode="int",
-        shuffle=False
+        shuffle=False,
     )
 
-    AUTOTUNE = tf.data.AUTOTUNE
-
-    train_ds = train_ds.prefetch(1)
-    val_ds = val_ds.prefetch(1)
-    test_ds = test_ds.prefetch(1)
+    autotune = tf.data.AUTOTUNE
+    train_ds = train_ds.prefetch(autotune)
+    val_ds = val_ds.prefetch(autotune)
+    test_ds = test_ds.prefetch(autotune)
 
     return train_ds, val_ds, test_ds
