@@ -17,16 +17,17 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Local data (do not commit raw datasets)
+# Local datasets
 data/
 datasets/
 
-# Model artifacts (may be large)
-models/*.keras
-models/*.h5
-models/*.pkl
-models/*.joblib
-models/*.weights
+# Generated model artifacts (including nested project folders)
+*.keras
+*.h5
+*.pkl
+*.joblib
+*.weights
+*.weights.h5
 
 # OS / editor
 .DS_Store
